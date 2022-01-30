@@ -4,7 +4,7 @@ import os
 
 
 app = Flask(__name__)
-TOKEN = '5285480981:AAHMaIsAj41xwheYyhcxyvyqPrD_JR49ZgU'
+TOKEN = os.environ.get('TOKEN')
 bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
@@ -21,7 +21,7 @@ def get_message():
 @app.route('/')
 def main():
     bot.remove_webhook()
-    bot.set_webhook(url='???????' + TOKEN)
+    bot.set_webhook(url='https://myyy-bot-1.herokuapp.com/' + TOKEN)
     return 'Python Telegram Bot', 200
 
 
